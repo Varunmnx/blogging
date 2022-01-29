@@ -1,1 +1,12 @@
-<h1>this is logout</h1>
+{%extends 'app1/hommer.html'%}
+{%block c%}
+<h2>You have been successfully Logged Out</h2>
+<div class="content-section">
+  
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Login again</a>
+        </small>
+    </div>
+</div>
+{%endblock%}
