@@ -5,7 +5,7 @@ from django.template import context
 from django.urls import is_valid_path
 from importlib_metadata import email
 
-from app1.views import home
+
 from .forms import UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm,UserUpdateForm

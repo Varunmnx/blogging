@@ -6,9 +6,9 @@ from .models import Post
 from django.views.generic import ListView
 # Create your views here.
 
-def home(request):
-    context={'posts':Post.objects.all()}
-    return render(request,'app1/home.html',context)
+# def home(request):
+#     context={'posts':Post.objects.all()}
+#     return render(request,'app1/home.html',context)
 
 class PostListView(ListView):
     model = Post
