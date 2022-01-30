@@ -7,10 +7,12 @@ from users import views as user_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import PostListView
 
 urlpatterns = [
 path('profile/',user_views.profile,name='profile'),
-path('',views.home,name='blog-home'),
+path('',PostListView.as_view(),name='blog-home'),
+# path('',views.home,name='blog-home'),
 path('about/',views.about,name='blog-about'),
 path('register/',user_views.register,name='register'),
 path('login/',auth_views.LoginView.as_view(template_name='users/login.html'),name='login'),
