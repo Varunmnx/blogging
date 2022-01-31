@@ -1,9 +1,10 @@
 from multiprocessing import context
+from pyexpat import model
 from unicodedata import name
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView
 # Create your views here.
 
 # def home(request):
@@ -17,7 +18,9 @@ class PostListView(ListView):
     context_object_name = 'posts' 
     
 
-    
+class PostDetailView(DetailView):
+    model = Post
+        
 
 def about(request):
     return render(request,'app1/about.html',{'title':"About"})
