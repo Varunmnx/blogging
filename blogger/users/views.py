@@ -11,7 +11,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm,UserUpdateForm
 # Create your views here.
 def register(request):
-   
+   if request.user.is_authenticated: #this was not from corey 
+       return redirect('blog-home')
+   else:   
     if request.method =='POST':
         form =UserRegistrationForm(request.POST)
         if form.is_valid():
