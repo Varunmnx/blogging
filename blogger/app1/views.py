@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
 from django.views.generic import ListView,DetailView,CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 # def home(request):
@@ -23,7 +24,7 @@ class PostDetailView(DetailView):
     model = Post
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin,CreateView):
     model = Post
     fields = ['title','content'] 
     def form_valid(self,form):
