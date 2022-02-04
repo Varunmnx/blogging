@@ -18,7 +18,7 @@ class PostListView(ListView):
     template_name= 'app1/home.html'
     ordering =['-date_posted'] 
     context_object_name = 'posts'
-    paginate_by = 1
+    paginate_by = 3
     
 
 class PostDetailView(DetailView):
