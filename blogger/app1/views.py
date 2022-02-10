@@ -2,8 +2,9 @@ from dataclasses import fields
 from multiprocessing import context
 from pyexpat import model
 from unicodedata import name
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
+from django.contrib.auth.models import User 
 from .models import Post
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
@@ -24,9 +25,12 @@ class PostListView(ListView):
 class UserPostListView(ListView):
     model = Post
     template_name= 'app1/user_posts.html'
-    ordering =['-date_posted'] 
     context_object_name = 'posts'
     paginate_by = 3
+
+    def get_query_set(self):
+        user = get_object_or_404(User,username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
     
 
 class PostDetailView(DetailView):
