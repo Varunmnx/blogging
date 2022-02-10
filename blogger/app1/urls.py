@@ -8,11 +8,12 @@ from users import views as user_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import PostListView,PostDetailView,PostCreateView,PostUpdateView,PostDeleteView
+from .views import PostListView,PostDetailView,PostCreateView,PostUpdateView,PostDeleteView,UserPostListView
 
 urlpatterns = [
 path('profile/',user_views.profile,name='profile'),
 path('',PostListView.as_view(),name='blog-home'),
+path('user/<str:username>',UserPostListView.as_view(),name='user-posts'),
 # path('',views.home,name='blog-home'),
 path('about/',views.about,name='blog-about'),
 path('register/',user_views.register,name='register'),
